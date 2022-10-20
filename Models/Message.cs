@@ -1,5 +1,5 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
+
 namespace Yad2.Models
 {
     public class Message
@@ -36,7 +36,7 @@ namespace Yad2.Models
         [Required]
         public int NumberOfPorches { get; set; }
 
-        public List<AssetProperties> AssetProperties { get; set; }
+        public List<string> AssetProperties { get; set; }
 
         public int BuiltSquareMeters { get; set; }
 
@@ -45,6 +45,20 @@ namespace Yad2.Models
 
         public int Price { get; set; }
 
+        [Required]
+        public long EntryDate { get; set; } //positive number to indicate entry date, 0 for immediate, -1 for flex
 
+        public List<string> PictureLinks { get; set; }
+
+        public List<string> VideoLinks { get; set; }
+
+        [Required]
+        public Contact ContactPerson { get; set; }
+
+        [Required]
+        public int SubscriptionType { get; set; }
+
+        [Required]
+        public Boolean ExtraMailingOption { get; set; }
     }
 }
