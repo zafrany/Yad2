@@ -5,6 +5,6 @@ namespace Yad2.Models
 {
     public class User : IdentityUser
     {
-        public List<Message> userMessages;
+        public List<Message>? userMessages;
     }
 }

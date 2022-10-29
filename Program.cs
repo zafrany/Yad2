@@ -1,3 +1,8 @@
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using Yad2.Data;
+using Yad2.Models;
+
 namespace Yad2
 {
     public class Program
@@ -7,7 +12,8 @@ namespace Yad2
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
-
+            builder.Services.AddDbContext<Yad2Context>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("Yad2DB")));
+            builder.Services.AddIdentity<User, IdentityRole>(options => options.User.RequireUniqueEmail = true).AddEntityFrameworkStores<Yad2Context>().AddDefaultTokenProviders();
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
